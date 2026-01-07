@@ -1,0 +1,17 @@
+{
+  "name": "csk-drift",
+  "version": "1.0.0",
+  "description": "WordPress theme for csk-drift",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass src/scss/main.scss dist/css/main.css --style compressed --no-source-map",
+    "watch:css": "sass --watch src/scss/main.scss dist/css/main.css",
+    "build": "npm run build:css"
+  },
+  "keywords": [],
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+}
