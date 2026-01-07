@@ -3,17 +3,29 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-  <div class="container">
-    <h1>Hello csk-drift</h1>
-    <?php
+  <?php
+  if (have_rows('content')):
+    while (have_rows('content')):
+      the_row();
+      $layout = get_row_layout();
+      get_template_part('template-parts/custom-content', $layout);
+    endwhile;
+  else:
+    // Fallback content or empty
     if (have_posts()):
-      while (have_posts()):
-        the_post();
-        the_content();
-      endwhile;
+      ?>
+      <div class="container">
+        <?php
+        while (have_posts()):
+          the_post();
+          the_content();
+        endwhile;
+        ?>
+      </div>
+      <?php
     endif;
-    ?>
-  </div>
+  endif;
+  ?>
 </main>
 
 <?php

@@ -1,0 +1,226 @@
+// Footer Styles
+@use "sass:color";
+
+// Pre-footer: Status Prawa Jazdy
+.driver-status-section {
+    background-color: #050b1c; // Dark blue/black based on image
+    padding: 80px 0;
+    color: #fff;
+    text-align: center;
+    position: relative; // For possible background effects if needed
+
+    .status-icon-wrapper {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .status-icon {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #3b82f6; // Blue icon
+    }
+
+    .status-title {
+        font-size: 28px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .status-subtitle {
+        color: #8899a6;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+
+    .btn-pwpw {
+        background-color: #2563eb;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.3s;
+        font-family: monospace; // Monospace font for URL look
+
+        &:hover {
+            background-color: #1d4ed8;
+        }
+    }
+}
+
+// Main Footer
+.site-footer {
+    background-color: #000;
+    color: #8899a6;
+    padding: 80px 0 0; // Top padding only
+    font-size: 14px;
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr; // Adjust column widths
+        gap: 40px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid #222;
+
+        @media (max-width: 991px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 576px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .footer-heading {
+        color: #fff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        border-left: 2px solid #2563eb; // Blue accent line
+        padding-left: 10px;
+    }
+
+    // Col 1: Branding
+    .footer-branding {
+        .footer-logo {
+            margin-bottom: 20px;
+            .logo-text {
+                font-size: 24px;
+                font-weight: 900;
+                color: #fff;
+                letter-spacing: 1px;
+            }
+        }
+        
+        .footer-desc {
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            
+            .social-btn {
+                width: 36px;
+                height: 36px;
+                background-color: #222;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                
+                &:hover {
+                    background-color: #2563eb;
+                }
+            }
+        }
+    }
+
+    // Links Lists
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 15px;
+            
+            a {
+                color: #8899a6;
+                text-decoration: none;
+                transition: color 0.3s;
+                
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    // Contact List
+    .footer-contact-list {
+        li {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            
+            i {
+                color: #2563eb;
+                margin-top: 4px;
+            }
+        }
+    }
+
+    // Instructor Box
+    .instructor-box {
+        background-color: #0f131a; // Very dark blue/grey
+        padding: 20px;
+        border-radius: 4px;
+
+        .inst-label {
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .inst-phone {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .inst-status {
+            color: #22c55e; // Green
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .status-dot {
+                width: 8px;
+                height: 8px;
+                background-color: #22c55e;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        }
+    }
+
+    // Bottom
+    .footer-bottom {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #555;
+
+        @media (max-width: 576px) {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+    }
+}

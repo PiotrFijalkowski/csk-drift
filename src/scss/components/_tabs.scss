@@ -1,0 +1,343 @@
+// Tabs Section Styles
+@use "sass:color";
+
+.tabs-section {
+    padding: 80px 0;
+    background-color: #f8f9fa; // Light bg to contrast with white tab card
+
+    .container {
+        max-width: 1100px;
+    }
+}
+
+.section-header {
+    margin-bottom: 50px;
+    text-align: center;
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 900;
+        color: #0F172A;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        
+        .highlight {
+            color: #569AF7; /* Or theme accent */
+        }
+    }
+
+    .section-subtitle {
+        display: inline-block;
+        font-size: 14px;
+        color: #1a56db;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding: 0 40px;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        &::before { left: 0; }
+        &::after { right: 0; }
+    }
+}
+
+.tabs-wrapper {
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+// Nav
+.tabs-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    flex-wrap: nowrap; // Ensure they stay in a row if possible, or scroll if really small
+
+    // Removed column layout for tablet/mobile
+    // @media (max-width: 768px) {
+    //     flex-direction: column;
+    // }
+
+    .tab-link {
+        flex: 1;
+        padding: 25px 15px; // Reduced padding for smaller screens via media query below
+        text-align: center;
+        cursor: pointer;
+        color: #888;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column; // Icon above text
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        min-width: 0; // Fix for flex child truncation
+
+        i {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        // Hide text on mobile (max-width 576px or similar)
+        span {
+            @media (max-width: 576px) {
+                display: none; // Hide text
+            }
+        }
+
+        // Adjust padding for mobile to fit icons closer
+        @media (max-width: 576px) {
+             padding: 20px 10px;
+             gap: 0; // Remove gap since text is hidden
+             i { margin-bottom: 0; font-size: 20px; } // Make icons slightly larger
+        }
+
+        &:hover {
+            color: #1a56db;
+            background-color: #fff;
+        }
+
+        &.active {
+            color: #1a56db;
+            background-color: #fff;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: #1a56db;
+            }
+        }
+    }
+}
+
+// Content
+.tabs-content {
+    padding: 50px;
+    min-height: 400px;
+    position: relative;
+
+    @media (max-width: 768px) {
+        padding: 30px 20px;
+    }
+}
+
+.tab-panel {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+
+    &.active {
+        display: block;
+    }
+}
+
+// Inner Layout (Tab 1)
+.tab-inner-layout {
+    display: flex;
+    gap: 50px;
+
+    @media (max-width: 991px) {
+        flex-direction: column;
+    }
+}
+
+.tab-left-col {
+    flex: 1;
+
+    .badge-category {
+        display: inline-block;
+        background-color: #e6f0ff;
+        color: #1a56db;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 6px 15px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .tab-heading {
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 800;
+        color: #0F172A;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .tab-tagline {
+        font-size: 12px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+    }
+
+    .info-box-blue {
+        background-color: #f6f9fc; // Very light grey/blue
+        border-left: 4px solid #1a56db;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+        border-radius: 0 4px 4px 0;
+
+        .icon-calendar {
+            width: 40px;
+            height: 40px;
+            background-color: #1a56db;
+            color: #fff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .info-details {
+            strong {
+                display: block;
+                color: #0F172A;
+                text-transform: uppercase;
+                margin-bottom: 3px;
+            }
+            .info-time {
+                color: #1a56db;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .tab-description {
+        color: #666;
+        line-height: 1.6;
+        font-size: 14px;
+        
+        .location-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+            i {
+                color: #1a56db;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+// Right Col (CTA)
+.tab-right-col {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; // For watermark
+
+    @media (max-width: 991px) {
+        flex: auto;
+        border-top: 1px solid #eee;
+        padding-top: 30px;
+    }
+
+    .cta-box {
+        text-align: right;
+        @media (max-width: 991px) {
+            text-align: left;
+        }
+    }
+
+    .cta-title {
+        font-size: 42px; // Larger
+        font-weight: 900;
+        color: #333d4b; // Dark grey from image
+        font-style: italic; // Dynamic look
+        line-height: 1;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .cta-text {
+        font-size: 24px;
+        color: #569AF7; // Light blue
+        font-style: italic;
+        margin-bottom: 40px; // More spacing
+        font-weight: 300;
+    }
+
+    .btn-cta {
+        padding: 15px 30px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: linear-gradient(105deg, #2b6ce8 0%, #2b6ce8 85%, #569af7 85%); 
+        // Trying to mimic the hard cut in the button
+        position: relative;
+        overflow: hidden;
+        border: none;
+        
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        
+        i {
+            transition: transform 0.3s;
+        }
+
+        &:hover {
+           background: linear-gradient(105deg, #1e54b7 0%, #1e54b7 85%, #4686e0 85%);
+           i {
+               transform: translateX(5px);
+           }
+        }
+    }
+}
+
+// Generic Tab Content Typography
+.tab-text-content {
+    line-height: 1.8;
+    color: #555;
+
+    ul {
+        padding-left: 20px;
+        margin: 20px 0;
+        li {
+            margin-bottom: 10px;
+        }
+    }
+    
+    strong {
+        color: #000;
+    }
+}
+
+.centered-content {
+    text-align: center;
+}
+
+.phone-box {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a56db;
+    margin: 20px 0;
+}

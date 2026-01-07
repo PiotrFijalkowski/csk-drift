@@ -1,0 +1,211 @@
+// Header Styles
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+// Top Bar
+.top-bar {
+    background-color: #1a1a1a; // Slightly lighter than black
+    color: #fff;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #333;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__left {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__item {
+        color: #ddd;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.8;
+            color: #fff;
+        }
+
+        i {
+            color: #007bff; // Example blue for icons
+        }
+
+        &--like {
+            text-transform: uppercase;
+            font-weight: bold;
+            i {
+                color: #007bff;
+            }
+        }
+    }
+}
+
+// Main Navbar
+.main-navbar {
+    background-color: #000;
+    padding: 10px 0; // Reduced padding slightly
+    border-top: none; 
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__branding {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001; // Above menu
+
+    @media (max-width: 991px) { // Tablet/Mobile breakpoint
+        display: block;
+    }
+}
+
+.branding-separator {
+    width: 1px;
+    height: 40px;
+    background-color: #444;
+}
+
+.slogan {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    line-height: 1.2;
+    min-width: 200px; // Ensure it has space
+
+    @media (max-width: 768px) {
+        display: none; // Hide slogan on small screens if needed, or adjust
+    }
+
+    &__main {
+        font-weight: bold;
+        letter-spacing: 3px; // Increased spacing
+        font-size: 18px; // Increased size slightly
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    &__sub {
+        font-size: 11px;
+        color: #888;
+        letter-spacing: 2px; // Increased spacing
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+}
+
+.logo {
+    img {
+        max-height: 50px; // Adjust based on actual logo size
+        width: auto;
+    }
+}
+
+// Navigation
+.main-navigation {
+    width: 100%; // Ensure it takes available space if needed or adjust based on layout
+    display: flex;
+    justify-content: flex-end;
+
+    @media (max-width: 991px) {
+        display: none; // Hide by default on mobile
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #000;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+        
+        &.toggled {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+    }
+
+    ul { // Target generic ul to catch fallback menus too
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 30px;
+
+        @media (max-width: 991px) {
+            flex-direction: column;
+            gap: 0;
+            text-align: center;
+        }
+
+        li {
+            margin: 0; // Reset margin
+            
+            a {
+                color: #aaa;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 14px;
+                letter-spacing: 1px;
+                transition: color 0.3s;
+                font-weight: 500;
+                display: block; // Ensure padding/margin works
+                padding: 10px 0;
+
+                &:hover {
+                    color: #fff;
+                }
+                
+                @media (max-width: 991px) {
+                    padding: 15px 0;
+                    border-bottom: 1px solid #222;
+                }
+            }
+
+            &.current-menu-item a {
+                color: #fff;
+                border-bottom: 2px solid #007bff;
+                
+                @media (max-width: 991px) {
+                     border-bottom: 1px solid #007bff;
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,16 +1,25 @@
 // Main SCSS file
+@use 'layout/header';
+@use 'layout/footer';
+@use 'components/hero';
+@use 'components/cards';
+@use 'components/tabs';
+@use 'components/contact';
+@use 'components/offer';
+@use 'components/blog';
 
 body {
     background-color: #fff;
     color: #333;
     font-family: sans-serif;
 }
+body, html {
+    margin: 0;
+    padding: 0;
+}
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 15px;
 }
-
-// Import other partials here
-// @import 'components/hero';

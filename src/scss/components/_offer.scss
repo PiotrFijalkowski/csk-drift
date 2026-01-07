@@ -1,0 +1,355 @@
+// Offer Section Styles
+@use "sass:color";
+
+.offer-section {
+    padding: 80px 0;
+    
+    // Light grid background (Same as Hero)
+    background-color: #f8f9fa;
+    background-image: 
+        linear-gradient(#eee 1px, transparent 1px),
+        linear-gradient(90deg, #eee 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+
+    .section-intro {
+        max-width: 600px;
+        margin: 0 auto 50px;
+        color: #8899a6;
+        line-height: 1.6;
+        font-size: 15px;
+    }
+}
+
+// Pricing Grid
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+
+    @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+        max-width: 600px; // Limit width on mobile/tablet to not look stretched
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.pricing-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    &.featured {
+        border-color: #2b6ce8;
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: 0 15px 40px rgba(43, 108, 232, 0.15); // Slight blue shadow
+
+        @media (max-width: 991px) {
+            transform: none; // Reset scale on mobile
+        }
+
+        &:hover {
+             transform: scale(1.05) translateY(-5px);
+             @media (max-width: 991px) {
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+    // Ribbons
+    .ribbon-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #1a56db;
+        color: #fff;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 5px 15px;
+        border-bottom-left-radius: 4px;
+        border-top-right-radius: 4px; // Match card corner
+    }
+}
+
+// Badges
+.card-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+
+    &.badge-bestseller {
+        background-color: #e6f0ff;
+        color: #1a56db;
+    }
+    
+    &.badge-express {
+        background-color: #fff9e6;
+        color: #f59e0b; // Amber/Orange
+    }
+
+    &.badge-eco {
+        background-color: #ecfdf5;
+        color: #10b981; // Emerald/Green
+    }
+}
+
+// Content
+.course-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.price-box {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+
+    .price-val {
+        font-size: 48px;
+        font-weight: 900;
+        color: #0F172A;
+        line-height: 1;
+    }
+
+    .price-curr {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0F172A;
+    }
+
+    .price-note {
+        font-size: 12px;
+        margin-top: 5px;
+        font-weight: 600;
+        
+        &.normal-note {
+            color: #888;
+        }
+
+        &:not(.normal-note) {
+             color: #1a56db; // Blue for student note
+        }
+    }
+}
+
+// Features List
+.course-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    flex-grow: 1; // Push footer down
+
+    li {
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        i {
+             color: #1a56db; // Checkmark
+             font-size: 16px;
+        }
+        
+        strong {
+            color: #333;
+        }
+    }
+}
+
+.card-footer {
+    text-align: center;
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-outline {
+        border: 1px solid #eee;
+        color: #333;
+        background: transparent;
+        font-size: 12px;
+        padding: 15px;
+        
+        &:hover {
+            border-color: #ccc;
+            background: #fcfcfc;
+        }
+    }
+
+    .btn-primary-gradient {
+        background: linear-gradient(90deg, #2b6ce8 0%, #1a56db 100%);
+        color: #fff;
+        font-size: 12px;
+        padding: 15px; // Make bigger
+        border-radius: 4px;
+        font-weight: 800;
+        text-decoration: none;
+        display: block;
+        transition: opacity 0.3s;
+        
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+}
+
+// Wide Info Cards
+.wide-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 80px;
+
+    @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wide-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+
+    @media (max-width: 576px) {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        background-color: #e6f0ff;
+        border-radius: 50%;
+        color: #1a56db;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+
+        &.icon-purple {
+            background-color: #f3e8ff;
+            color: #9333ea; // Purple
+        }
+    }
+
+    .wide-content {
+        flex: 1;
+        
+        .wide-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .wide-text {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+
+    .wide-action {
+        flex-shrink: 0;
+        
+        .btn-outline-sm {
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+            transition: all 0.3s;
+            white-space: nowrap;
+
+            &:hover {
+                border-color: #333;
+                background: #333;
+                color: #fff;
+            }
+        }
+    }
+}
+
+// Features Icons Row
+.features-icons-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr 1fr; // 2x2 on tablet
+    }
+    
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr; // Stack on mobile
+    }
+
+    .feature-item {
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a56db;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #0F172A;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: #888;
+        }
+    }
+}
