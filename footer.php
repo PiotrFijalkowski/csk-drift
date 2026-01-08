@@ -22,8 +22,9 @@
       <!-- Column 1: Branding -->
       <div class="footer-col footer-branding">
         <div class="footer-logo">
-          <!-- Assuming logo-white.png exists or using text, using white text for now based on design -->
-          <span class="logo-text">DRIFT</span>
+          <a href="<?php echo esc_url(home_url('/')); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo.png" alt="Drift Logo">
+          </a>
         </div>
         <p class="footer-desc">
           Profesjonalna szkoła jazdy w Białymstoku. Stawiamy na jakość, nowoczesność i bezpieczeństwo naszych kursantów.
@@ -31,20 +32,23 @@
         <div class="footer-socials">
           <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="social-btn"><i class="fa-solid fa-thumbs-up"></i></a>
-          <!-- Assuming a 'like' page or similar -->
-          <a href="#" class="social-btn"><i class="fa-solid fa-video"></i></a> <!-- Assuming video/youtube -->
+          <a href="#" class="social-btn"><i class="fa-solid fa-video"></i></a>
         </div>
       </div>
 
       <!-- Column 2: Shortcuts -->
       <div class="footer-col">
         <h4 class="footer-heading">NA SKRÓTY</h4>
-        <ul class="footer-menu">
-          <li><a href="#">O nas</a></li>
-          <li><a href="#">Oferta kursów</a></li>
-          <li><a href="#">Cennik</a></li>
-          <li><a href="#">Galeria</a></li>
-        </ul>
+        <?php
+        wp_nav_menu(
+          array(
+            'theme_location' => 'primary',
+            'container' => false,
+            'menu_class' => 'footer-menu',
+            'fallback_cb' => false,
+          )
+        );
+        ?>
       </div>
 
       <!-- Column 3: Contact -->
@@ -66,15 +70,47 @@
         </ul>
       </div>
 
-      <!-- Column 4: Instructor -->
+      <!-- Column 4: Zapisz się -->
       <div class="footer-col">
-        <h4 class="footer-heading">INSTRUKTOR</h4>
+        <h4 class="footer-heading">ZAPISZ SIĘ</h4>
         <div class="instructor-box">
-          <p class="inst-label">Bezpośredni kontakt do instruktora:</p>
+          <p class="inst-label">Bezpośredni kontakt:</p>
           <div class="inst-phone">516 537 654</div>
-          <div class="inst-status">
-            <span class="status-dot"></span> DOSTĘPNY
-          </div>
+
+          <?php
+          // Availability Logic
+          // Times: PON:10.00-16.00, ŚR:10.00-16.00, CZW:10.00-15.30
+          $now = current_time('timestamp');
+          $day = date('N', $now); // 1 = Mon, 3 = Wed, 4 = Thu
+          $hour_min = date('H.i', $now);
+          $hour_min = (float) $hour_min;
+
+          $is_available = false;
+          $availability_text = '';
+
+          if ($day == 1) { // Monday
+            if ($hour_min >= 10.00 && $hour_min <= 16.00) {
+              $is_available = true;
+              $availability_text = 'PON: 10.00 - 16.00';
+            }
+          } elseif ($day == 3) { // Wednesday
+            if ($hour_min >= 10.00 && $hour_min <= 16.00) {
+              $is_available = true;
+              $availability_text = 'ŚR: 10.00 - 16.00';
+            }
+          } elseif ($day == 4) { // Thursday
+            if ($hour_min >= 10.00 && $hour_min <= 15.30) {
+              $is_available = true;
+              $availability_text = 'CZW: 10.00 - 15.30';
+            }
+          }
+          ?>
+
+          <?php if ($is_available): ?>
+            <div class="inst-status">
+              <span class="status-dot"></span> DOSTĘPNY: <?php echo esc_html($availability_text); ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
 
